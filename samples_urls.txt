@@ -13,3 +13,20 @@ http://www.theatlantic.com/health/archive/2016/07/the-enigma-of-urban-psychosis/
 http://thinkonbytes.blogspot.com.br/2016/07/your-openstreetmap-server-in-120gb.html|Marcos Costales
 http://themerkle.com/new-senate-bill-aims-to-restrict-tor-access-for-illicit-activities/|JP Buntinx
 http://gizmodo.com/drawing-eyes-on-cow-butts-may-ward-off-hungry-lions-1783744270|Jennifer Ouellette
+http://www.billboard.com/biz/articles/news/legal-and-management/7439046/apple-proposes-simplified-statutory-licensing-scheme|Robert Levine
+http://www.drmaciver.com/2016/07/contributors-do-not-save-time/|David R. MacIver
+http://www.theregister.co.uk/2016/07/15/aussie_bank_boffins_drop_slick_ir_tool_for_mandiant_mobs/|Darren Pauli
+https://www.washingtonpost.com/news/animalia/wp/2016/07/15/drone-fired-peanut-butter-pellets-a-government-plan-to-save-endangered-ferrets/|Karin Brulliard
+http://www.theatlantic.com/science/archive/2016/07/the-turtle-shell-first-evolved-for-digging-not-defence/491087/|Ed Yong
+http://www.bloomberg.com/view/articles/2016-07-15/herbalife-will-have-to-live-without-mansions-and-private-jets|Matt Levine
+http://arstechnica.com/apple/2016/07/hands-on-with-swift-playgrounds-apples-attempt-to-get-kids-to-code/|Andrew Cunningham
+https://about.gitlab.com/2016/07/12/our-handbook-is-open-source-heres-why/|Sid Sijbrandij
+http://yellerapp.com/posts/2015-01-12-the-worst-server-setup-you-can-make.html|
+https://techcrunch.com/2016/05/20/purism-builds-a-secure-tablet-with-physical-wi-fi-and-camera-switches/|John Biggs
+http://www.theregister.co.uk/2016/07/13/coding_error_costs_citigroup_7m|Kieren McCarthy
+https://aeon.co/essays/micro-targeted-digital-porn-is-changing-human-sexuality|Mark Hay
+http://chrismm.com/blog/the-other-kind-of-javascript-fatigue/|Christian Maioli Mackeprang
+https://blog.ethereum.org/2016/07/15/to-fork-or-not-to-fork/|Jeffrey Wilcke
+https://blog.trailofbits.com/2016/07/11/why-i-didnt-catch-any-pokemon-today/|Dan Guido
+http://codingvc.com/why-startup-technical-diligence-is-a-waste-of-time/|Rodrigo Martinez
+http://mobile.reuters.com/article/idUSKCN0ZS2VI|Nate Raymond

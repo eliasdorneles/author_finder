@@ -33,19 +33,22 @@ def download_url(url):
     from_cache = cache_get(url)
     if from_cache:
         print('Using from cache %s' % url)
-        yield from_cache
+        return from_cache
     else:
         result = requests.get(url).text
         print('Downloaded %s' % url)
         cache_store(url, result)
-        yield result
+        return result
 
 
 def get_dataset():
     with open('samples_urls.txt') as f:
         url_samples = [l.split('|') for l in f.readlines()]
 
-    pages = {url: download_url(url) for url, _ in url_samples}
+    pages = [
+        dict(url=url, page=download_url(url), target=target.strip())
+        for url, target in url_samples
+    ]
     print('Total page samples: %d' % len(pages))
 
     return pages

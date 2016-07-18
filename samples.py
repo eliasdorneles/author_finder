@@ -29,24 +29,23 @@ def cache_get(url):
         return None
 
 
-def download_urls(urls):
-    for url in urls:
-        from_cache = cache_get(url)
-        if from_cache:
-            print('Using from cache %s' % url)
-            yield from_cache
-        else:
-            result = requests.get(url).text
-            print('Downloaded %s' % url)
-            cache_store(url, result)
-            yield result
+def download_url(url):
+    from_cache = cache_get(url)
+    if from_cache:
+        print('Using from cache %s' % url)
+        yield from_cache
+    else:
+        result = requests.get(url).text
+        print('Downloaded %s' % url)
+        cache_store(url, result)
+        yield result
 
 
 def get_dataset():
     with open('samples_urls.txt') as f:
         url_samples = [l.split('|') for l in f.readlines()]
 
-    pages = list(download_urls([url for url, _ in url_samples]))
+    pages = {url: download_url(url) for url, _ in url_samples}
     print('Total page samples: %d' % len(pages))
 
     return pages

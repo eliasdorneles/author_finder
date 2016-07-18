@@ -1,0 +1,3 @@
+* implement something to extract all leaves
+* check if target name appears in more than on leaf for some article
+* try count vectorizer for feature extraction

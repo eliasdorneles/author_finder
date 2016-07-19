@@ -7,7 +7,6 @@ http://keionline.org/node/2614|James Love
 http://www.wired.com/2016/07/mailchimp-sends-billion-emails-day-thats-easy-part/|Klint Finley
 http://nautil.us/issue/27/dark-matter/the-curious-case-of-the-bog-bodies|Kristen C. French
 http://blog.zorinaq.com/release-of-hablog-and-new-design/|Marc Bevand
-http://www.smithsonianmag.com/science-nature/philippines-island-unique-mammals-180959823/|Ben Garrod
 http://degoes.net/articles/destroy-all-ifs|John A De Goes
 http://www.theatlantic.com/health/archive/2016/07/the-enigma-of-urban-psychosis/491141/|Vaughan Bell
 http://thinkonbytes.blogspot.com.br/2016/07/your-openstreetmap-server-in-120gb.html|Marcos Costales
@@ -20,7 +19,6 @@ http://www.theatlantic.com/science/archive/2016/07/the-turtle-shell-first-evolve
 http://www.bloomberg.com/view/articles/2016-07-15/herbalife-will-have-to-live-without-mansions-and-private-jets|Matt Levine
 http://arstechnica.com/apple/2016/07/hands-on-with-swift-playgrounds-apples-attempt-to-get-kids-to-code/|Andrew Cunningham
 https://about.gitlab.com/2016/07/12/our-handbook-is-open-source-heres-why/|Sid Sijbrandij
-http://yellerapp.com/posts/2015-01-12-the-worst-server-setup-you-can-make.html|
 https://techcrunch.com/2016/05/20/purism-builds-a-secure-tablet-with-physical-wi-fi-and-camera-switches/|John Biggs
 http://www.theregister.co.uk/2016/07/13/coding_error_costs_citigroup_7m|Kieren McCarthy
 https://aeon.co/essays/micro-targeted-digital-porn-is-changing-human-sexuality|Mark Hay

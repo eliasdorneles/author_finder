@@ -1,6 +1,9 @@
 [X] implement something to extract all leaves
 [X] check if target name appears in more than on leaf for some article
-[ ] try count vectorizer for feature extraction
+[X] try count vectorizer for feature extraction
     - q: how to evaluate?
         extract elements ->
             for each elem, extract features and feed SVM to classify into AUTHOR, OTHER
+[ ] create evaluation setup, measure avg precision, recall and f1 w/ cross validation
+[ ] inspect classifier weights manually
+[ ] what is L1 regularization?

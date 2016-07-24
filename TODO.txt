@@ -5,5 +5,32 @@
         extract elements ->
             for each elem, extract features and feed SVM to classify into AUTHOR, OTHER
 [X] create evaluation setup, measure avg precision, recall and f1 w/ cross validation
-[ ] inspect classifier weights manually
+[X] inspect classifier weights manually
+    did it, and results look not meaningful for positive cases:
+
+Top 10 weights for negative cases
+-1.20878  scary
+-1.10818  1688
+-0.62897  7rem
+-0.62897  widgetjsbefore
+-0.35876  x22screenname
+-0.32942  justify
+-0.31401  osteoderms
+-0.30872  longest
+-0.30359  dreamers
+-0.29795  erdogan
+
+Top 10 weights for positive cases
+1.57338  dj
+1.26045  checks
+1.08278  15pm
+1.00252  down
+0.99077  publisher
+0.95067  et
+0.91860  analyze
+0.90656  carnivore
+0.88758  shock
+0.88742  dry
+
+
 [ ] what is L1 regularization?

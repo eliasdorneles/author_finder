@@ -63,3 +63,19 @@ print(metrics.classification_report(y, predicted))
 # does this make sense to measure too?
 # scores = cross_validation.cross_val_score(clf, X, y, cv=10, scoring='f1')
 # print("Accuracy: %0.2f (+/- %.05f)" % (scores.mean(), scores.std() * 2))
+
+
+print('Training and peeking at the word weights...')
+X_train, y_train = build_Xy_from_pages_dataset(dataset[:20])
+clf = get_trained_classifier(X_train, y_train)
+cv = clf.steps[0][1]
+svc = clf.steps[1][1]
+word_weights = zip(svc.coef_[0], cv.vocabulary_)
+
+print('Top 10 weights for negative cases')
+for weight, word in sorted(word_weights)[:10]:
+    print('%0.5f  %s' % (weight, word))
+
+print('\nTop 10 weights for positive cases')
+for weight, word in sorted(word_weights)[-10:][::-1]:
+    print('%0.5f  %s' % (weight, word))

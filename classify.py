@@ -1,9 +1,9 @@
 import samples
 from elements import get_all_leaves, get_all_meta_content
-import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn import svm
 from sklearn import cross_validation
+from sklearn.pipeline import make_pipeline
 
 
 def extract_text(node):
@@ -40,12 +40,12 @@ test = ds[20:25]
 validation = ds[25:]
 
 
-text_X_train, y_train = build_Xy_from_pages_dataset(train)
+X_train, y_train = build_Xy_from_pages_dataset(train)
 
-vectorizer = CountVectorizer()
-X_train = vectorizer.fit_transform(text_X_train)
-
-clf = svm.LinearSVC()
+clf = make_pipeline(
+    CountVectorizer(),
+    svm.LinearSVC(),
+)
 clf.fit(X_train, y_train)
 
 
@@ -58,7 +58,7 @@ text_to_classify = [
     "Any mumbo jumbo here, it doesn't matter. :)",
 ]
 
-prediction = clf.predict(vectorizer.transform(text_to_classify))
+prediction = clf.predict(text_to_classify)
 expected = [True, True, True, False]
 for t, p, e in zip(text_to_classify, prediction, expected):
     print('Worked? %5s  Got %5s, expected %5s (%r)' % (p == e, p, e, maybe_truncate(t)))
@@ -67,4 +67,4 @@ for t, p, e in zip(text_to_classify, prediction, expected):
 print('\nNow trying something from unseen data...')
 text_X_test, y_test = build_Xy_from_pages_dataset(test[1:2])
 
-print('Score', clf.score(vectorizer.transform(text_X_test), y_test))
+print('Score', clf.score(text_X_test, y_test))

@@ -3,6 +3,7 @@ from elements import get_all_leaves, get_all_meta_content
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn import svm
+from sklearn import cross_validation
 
 
 def extract_text(node):
@@ -18,6 +19,20 @@ def extract_elements_text(elements):
     return [extract_text(e) for e in elements]
 
 
+def build_Xy_from_pages_dataset(dataset):
+    X = []
+    y = []
+    for d in dataset:
+        elements_text = extract_elements_text(get_page_elements(d['page']))
+        y.extend([d['target'] == e for e in elements_text])
+        X.extend(elements_text)
+    return X, y
+
+
+def maybe_truncate(s, size=75):
+    return s if len(s) <= size else s[:size - 3] + '...'
+
+
 ds = samples.get_dataset()
 
 train = ds[:20]
@@ -25,25 +40,13 @@ test = ds[20:25]
 validation = ds[25:]
 
 
-target = []
-input_text = []
-
-for d in train:
-    elements_text = extract_elements_text(get_page_elements(d['page']))
-
-    input_text.extend(elements_text)
-    target.extend([d['target'] == e for e in elements_text])
+text_X_train, y_train = build_Xy_from_pages_dataset(train)
 
 vectorizer = CountVectorizer()
-X = vectorizer.fit_transform(input_text)
-y = np.array(target)
+X_train = vectorizer.fit_transform(text_X_train)
 
 clf = svm.LinearSVC()
-clf.fit(X, y)
-
-
-def maybe_truncate(s, size=75):
-    return s if len(s) <= size else s[:size - 3] + '...'
+clf.fit(X_train, y_train)
 
 
 print('Robot trained!')
@@ -62,11 +65,6 @@ for t, p, e in zip(text_to_classify, prediction, expected):
 
 
 print('\nNow trying something from unseen data...')
-for d in test[1:2]:
-    print('For article: %s' % d['url'])
-    elements_text = extract_elements_text(get_page_elements(d['page']))
-    prediction = clf.predict(vectorizer.transform(elements_text))
-    expected = [d['target'] == e for e in elements_text]
+text_X_test, y_test = build_Xy_from_pages_dataset(test[1:2])
 
-    for t, p, e in zip(elements_text, prediction, expected):
-        print('Worked? %5s  Got %5s, expected %5s (%r)' % (p == e, p, e, maybe_truncate(t)))
+print('Score', clf.score(vectorizer.transform(text_X_test), y_test))

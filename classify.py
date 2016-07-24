@@ -1,9 +1,11 @@
+from __future__ import print_function
+import numpy as np
+from sklearn import cross_validation, svm, metrics
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.pipeline import make_pipeline
+
 import samples
 from elements import get_all_leaves, get_all_meta_content
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn import svm
-from sklearn import cross_validation
-from sklearn.pipeline import make_pipeline
 
 
 def extract_text(node):
@@ -26,45 +28,38 @@ def build_Xy_from_pages_dataset(dataset):
         elements_text = extract_elements_text(get_page_elements(d['page']))
         y.extend([d['target'] == e for e in elements_text])
         X.extend(elements_text)
-    return X, y
+    return X, np.array(y)
 
 
-def maybe_truncate(s, size=75):
-    return s if len(s) <= size else s[:size - 3] + '...'
+def create_classifier():
+    return make_pipeline(
+        CountVectorizer(),
+        svm.LinearSVC(),
+    )
 
 
-ds = samples.get_dataset()
-
-train = ds[:20]
-test = ds[20:25]
-validation = ds[25:]
-
-
-X_train, y_train = build_Xy_from_pages_dataset(train)
-
-clf = make_pipeline(
-    CountVectorizer(),
-    svm.LinearSVC(),
-)
-clf.fit(X_train, y_train)
+def get_trained_classifier(X_train, y_train):
+    """Return classifier trained with given dataset parameters
+    """
+    clf = create_classifier()
+    clf.fit(X_train, y_train)
+    return clf
 
 
-print('Robot trained!')
-print('Now, trying to predict some hardcoded tests...')
-text_to_classify = [
-    'elias dorneles',
-    'elias',
-    'dorneles elias',
-    "Any mumbo jumbo here, it doesn't matter. :)",
-]
+dataset = samples.get_dataset()
 
-prediction = clf.predict(text_to_classify)
-expected = [True, True, True, False]
-for t, p, e in zip(text_to_classify, prediction, expected):
-    print('Worked? %5s  Got %5s, expected %5s (%r)' % (p == e, p, e, maybe_truncate(t)))
+X, y = build_Xy_from_pages_dataset(dataset)
+clf = create_classifier()
 
+# this gives the prediction result for every element
+# when it was in the test dataset during cross validation
+predicted = cross_validation.cross_val_predict(clf, X, y, cv=10)
 
-print('\nNow trying something from unseen data...')
-text_X_test, y_test = build_Xy_from_pages_dataset(test[1:2])
+cm = metrics.confusion_matrix(y, predicted)
+print('\nConfusion matrix:')
+print(cm, '\n\n')
+print(metrics.classification_report(y, predicted))
 
-print('Score', clf.score(text_X_test, y_test))
+# does this make sense to measure too?
+# scores = cross_validation.cross_val_score(clf, X, y, cv=10, scoring='f1')
+# print("Accuracy: %0.2f (+/- %.05f)" % (scores.mean(), scores.std() * 2))

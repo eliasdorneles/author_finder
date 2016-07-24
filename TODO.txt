@@ -4,6 +4,6 @@
     - q: how to evaluate?
         extract elements ->
             for each elem, extract features and feed SVM to classify into AUTHOR, OTHER
-[ ] create evaluation setup, measure avg precision, recall and f1 w/ cross validation
+[X] create evaluation setup, measure avg precision, recall and f1 w/ cross validation
 [ ] inspect classifier weights manually
 [ ] what is L1 regularization?

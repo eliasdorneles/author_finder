@@ -45,3 +45,10 @@ Top 10 weights for positive cases
 [ ] try Logistic Regression, and have a look what it learns
 [ ] have a look at ROC metrics:
     http://scikit-learn.org/stable/modules/model_evaluation.html#roc-metrics
+
+
+Some ideas for feature extraction:
+
+* add text before/after elements
+* preprocess text (e.g. return only capitalization patterns instead of words themselves - e.g. TT can be 'two title-cased words')
+* replace tokens by its sizes

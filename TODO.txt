@@ -40,7 +40,7 @@ Top 10 weights for positive cases
     https://qph.ec.quoracdn.net/main-qimg-6ead386ee2cd2fe0ca7f2a44aca7fc1e?convert_to_webp=true
     from: https://www.quora.com/What-is-the-difference-between-L1-and-L2-regularization
 
-[ ] add LabelKFold for proper cross-validation
+[X] add LabelKFold for proper cross-validation
 [ ] have a look at the dataset, see where some of those words are coming from
 [ ] try Logistic Regression, and have a look what it learns
 [ ] have a look at ROC metrics:

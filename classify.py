@@ -24,11 +24,13 @@ def extract_elements_text(elements):
 def build_Xy_from_pages_dataset(dataset):
     X = []
     y = []
-    for d in dataset:
+    page_labels = []
+    for i, d in enumerate(dataset):
         elements_text = extract_elements_text(get_page_elements(d['page']))
         y.extend([d['target'] == e for e in elements_text])
         X.extend(elements_text)
-    return X, np.array(y)
+        page_labels.extend([i] * len(elements_text))
+    return X, np.array(y), np.array(page_labels)
 
 
 def create_classifier():
@@ -48,12 +50,13 @@ def get_trained_classifier(X_train, y_train):
 
 dataset = samples.get_dataset()
 
-X, y = build_Xy_from_pages_dataset(dataset)
+X, y, page_labels = build_Xy_from_pages_dataset(dataset)
 clf = create_classifier()
 
 # this gives the prediction result for every element
 # when it was in the test dataset during cross validation
-predicted = cross_validation.cross_val_predict(clf, X, y, cv=10)
+cv_iter = cross_validation.LabelKFold(page_labels, n_folds=10)
+predicted = cross_validation.cross_val_predict(clf, X, y, cv=cv_iter)
 
 cm = metrics.confusion_matrix(y, predicted)
 print('\nConfusion matrix:')
@@ -66,7 +69,7 @@ print(metrics.classification_report(y, predicted))
 
 
 print('Training and peeking at the word weights...')
-X_train, y_train = build_Xy_from_pages_dataset(dataset[:20])
+X_train, y_train, _ = build_Xy_from_pages_dataset(dataset[:20])
 clf = get_trained_classifier(X_train, y_train)
 cv = clf.steps[0][1]
 svc = clf.steps[1][1]

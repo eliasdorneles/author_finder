@@ -3,6 +3,7 @@ import numpy as np
 from sklearn import cross_validation, svm, metrics
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import FunctionTransformer
 
 import samples
 from elements import get_all_leaves, get_all_meta_content
@@ -26,15 +27,18 @@ def build_Xy_from_pages_dataset(dataset):
     y = []
     page_labels = []
     for i, d in enumerate(dataset):
-        elements_text = extract_elements_text(get_page_elements(d['page']))
-        y.extend([d['target'] == e for e in elements_text])
-        X.extend(elements_text)
-        page_labels.extend([i] * len(elements_text))
+        elements = get_page_elements(d['page'])
+        for e in elements:
+            text = extract_text(e)
+            X.append(e)
+            y.append(d['target'] == text)
+            page_labels.append(i)
     return X, np.array(y), np.array(page_labels)
 
 
 def create_classifier():
     return make_pipeline(
+        FunctionTransformer(extract_elements_text, validate=False),
         CountVectorizer(),
         svm.LinearSVC(),
     )
@@ -63,16 +67,12 @@ print('\nConfusion matrix:')
 print(cm, '\n\n')
 print(metrics.classification_report(y, predicted))
 
-# does this make sense to measure too?
-# scores = cross_validation.cross_val_score(clf, X, y, cv=10, scoring='f1')
-# print("Accuracy: %0.2f (+/- %.05f)" % (scores.mean(), scores.std() * 2))
-
 
 print('Training and peeking at the word weights...')
 X_train, y_train, _ = build_Xy_from_pages_dataset(dataset[:20])
 clf = get_trained_classifier(X_train, y_train)
-cv = clf.steps[0][1]
-svc = clf.steps[1][1]
+cv = clf.steps[-2][1]
+svc = clf.steps[-1][1]
 word_weights = zip(svc.coef_[0], cv.vocabulary_)
 
 print('Top 10 weights for negative cases')

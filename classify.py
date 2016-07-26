@@ -1,7 +1,8 @@
 from __future__ import print_function
 import numpy as np
+import re
 from sklearn import cross_validation, svm, metrics
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction import DictVectorizer
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import FunctionTransformer
 
@@ -36,17 +37,43 @@ def build_Xy_from_pages_dataset(dataset):
     return X, np.array(y), np.array(page_labels)
 
 
+def extract_dict_features(X):
+    def tokenize(x):
+        return re.split('\s', x)
+
+    def featurize(x):
+        text = extract_text(x)
+        tokens = tokenize(text)
+        parent_text = x.xpath('./parent::*').extract_first()
+        text_around = parent_text.split(x.extract())
+        before_tokens = tokenize(text_around[0])
+        after_tokens = tokenize(text_around[-1])
+        parent_tokens = tokenize(parent_text)
+        return {
+            'elem_tag': x.xpath('name()').extract_first(),
+            'token_count': len(tokens),
+            'before_tokens': len(before_tokens),
+            'after_tokens': len(after_tokens),
+            'by': 'by' in before_tokens,
+            'written': 'written' in parent_tokens,
+            'wrote': 'wrote' in parent_tokens,
+            'posted': 'posted' in parent_tokens,
+            'submitted': 'submitted' in parent_tokens,
+        }
+
+    return [featurize(x) for x in X]
+
+
 def create_classifier():
     return make_pipeline(
-        FunctionTransformer(extract_elements_text, validate=False),
-        CountVectorizer(),
+        FunctionTransformer(extract_dict_features, validate=False),
+        DictVectorizer(),
         svm.LinearSVC(),
     )
 
 
 def get_trained_classifier(X_train, y_train):
-    """Return classifier trained with given dataset parameters
-    """
+    "Return classifier trained with given dataset parameters"
     clf = create_classifier()
     clf.fit(X_train, y_train)
     return clf

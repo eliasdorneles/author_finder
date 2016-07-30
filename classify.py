@@ -171,5 +171,10 @@ def main():
     for weight, word in sorted(word_weights)[-10:][::-1]:
         print('%0.5f  %s' % (weight, word))
 
+    import pickle
+    with open('classifier.pickle', 'w') as f:
+        pickle.dump(clf, f)
+
+
 if __name__ == '__main__':
     main()

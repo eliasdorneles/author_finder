@@ -6,6 +6,7 @@
 from __future__ import print_function
 import requests
 import os
+import sys
 import hashlib
 import base64
 
@@ -17,7 +18,7 @@ def encode_key(s):
 def cache_store(url, content):
     key = encode_key(url)
     with open(os.path.join(b'.cache', key), 'w') as f:
-        f.write(content)
+        f.write(content.encode('utf-8'))
 
 
 def cache_get(url):
@@ -37,6 +38,7 @@ def download_url(url):
     else:
         result = requests.get(url).text
         print('D', end='')
+        sys.stdout.flush()
         cache_store(url, result)
         return result
 

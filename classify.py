@@ -48,7 +48,7 @@ def extract_dict_features(X):
         text_around = parent_text.split(x.extract())
         before_tokens = tokenize(text_around[0])
         after_tokens = tokenize(text_around[-1])
-        parent_tokens = tokenize(parent_text)
+        parent_tokens = set(tokenize(parent_text))
         return {
             'elem_tag': x.xpath('name()').extract_first(),
             'token_count': len(tokens),

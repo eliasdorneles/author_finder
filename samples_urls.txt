@@ -15,12 +15,10 @@ http://gizmodo.com/drawing-eyes-on-cow-butts-may-ward-off-hungry-lions-178374427
 http://www.billboard.com/biz/articles/news/legal-and-management/7439046/apple-proposes-simplified-statutory-licensing-scheme|Robert Levine
 http://www.drmaciver.com/2016/07/contributors-do-not-save-time/|David R. MacIver
 http://www.theregister.co.uk/2016/07/15/aussie_bank_boffins_drop_slick_ir_tool_for_mandiant_mobs/|Darren Pauli
-http://www.theatlantic.com/science/archive/2016/07/the-turtle-shell-first-evolved-for-digging-not-defence/491087/|Ed Yong
 http://www.bloomberg.com/view/articles/2016-07-15/herbalife-will-have-to-live-without-mansions-and-private-jets|Matt Levine
 http://arstechnica.com/apple/2016/07/hands-on-with-swift-playgrounds-apples-attempt-to-get-kids-to-code/|Andrew Cunningham
 https://about.gitlab.com/2016/07/12/our-handbook-is-open-source-heres-why/|Sid Sijbrandij
 https://techcrunch.com/2016/05/20/purism-builds-a-secure-tablet-with-physical-wi-fi-and-camera-switches/|John Biggs
-http://www.theregister.co.uk/2016/07/13/coding_error_costs_citigroup_7m|Kieren McCarthy
 https://aeon.co/essays/micro-targeted-digital-porn-is-changing-human-sexuality|Mark Hay
 http://chrismm.com/blog/the-other-kind-of-javascript-fatigue/|Christian Maioli Mackeprang
 https://blog.ethereum.org/2016/07/15/to-fork-or-not-to-fork/|Jeffrey Wilcke
@@ -34,7 +32,6 @@ http://www.ajc.com/news/lifestyles/shopping/safer-alternative-pinata-kids-birthd
 http://www.androidauthority.com/crowdfunding-project-week-como-audio-solo-duet-speakers-700271/|Edgar Cervantes
 http://www.androidcentral.com/meizu-m3-note-review|Abhishek Baxi
 https://www.androidpit.com/how-to-back-up-everything-on-android?sac=true|Kris Carlon
-http://arstechnica.com/science/2016/06/new-evidence-that-sperm-whales-form-clans-with-diverse-cultures-languages/?comments=1|Annalee Newitz
 http://www.bankrate.com/financing/saving-money/jobs-market-a-worry-in-the-us-and-uk-after-brexit/|Stephen Pounds
 http://betanews.com/2016/06/26/chrome-drm-streaming-video-flaw/|Mark Wilson
 http://www.workstars.com/recognition-and-engagement-blog/2016/06/13/really-fun-motivate-employees/|Jason Harney
@@ -87,5 +84,34 @@ http://www.voanews.com/media/video/iraq-fallujah-mosul/3392929.html|Zlatica Hoke
 http://www.weareiowa.com/sports/local-sports/angerman-defends-wins-new-kotc-title|Jordan Furbee
 http://www.wickedlocal.com/article/ZZ/20160626/BLOGS/306269958/-1/blogs01|Pat Cunningham
 http://www.wisebread.com/heres-how-the-election-could-impact-your-wallet|Brittany Lyte
-https://www.wired.com/2016/06/hey-stop-using-texts-two-factor-authentication/|Andy Greenberg
 http://www.zdnet.com/article/tech-after-brexit-where-do-we-go-from-here/|Steve Ranger
+https://medium.com/@jeremyjkun/habits-of-highly-mathematical-people-b719df12d15e|Jeremy Kun
+http://www.scientificamerican.com/article/israel-proves-the-desalination-era-is-here/|Rowan Jacobsen
+https://www.josephkirwin.com/2015/09/16/person_behind_the_mirror/|Joe Kirwin
+http://girinstud.io/news/2016/07/gimp-2-9-4-and-our-vision-for-gimp-future/|Jehan
+http://www.alexkras.com/using-code-snippets-to-test-save-and-reuse-javascript-code-in-chrome-developer-tools/|Alex Kras
+http://www.nybooks.com/daily/2015/01/16/charlie-hebdo-limits-satire/|Tim Parks
+http://news.nationalgeographic.com/2016/04/160425-new-delhi-most-polluted-city-matthieu-paley/|Melody Rowell
+http://www.newelectronics.co.uk/electronics-technology/intels-programmable-systems-group-takes-its-first-step-towards-an-fpga-based-system-in-package-portfolio/142701/|Graham Pitcher
+http://www.bradford-delong.com/2016/07/the-gunpowder-empire-scenario-incomplete-draft.html|J. Bradford DeLong
+https://www.quantamagazine.org/20160728-neutrinos-hint-matter-antimatter-asymmetry/|Natalie Wolchover
+http://copenhagensuborbitals.com/nexo-flew-fell-back/|Thomas Pedersen
+https://theintercept.com/2016/07/29/a-famed-hacker-is-grading-thousands-of-programs-and-may-revolutionize-software-in-the-process/|Kim Zetter
+https://robots.thoughtbot.com/advanced-postgres-performance-tips|Caleb Thompson
+http://www.bbc.com/news/science-environment-36917174|Rebecca Morelle
+http://www.npr.org/sections/thetwo-way/2016/07/29/487906925/uber-hasnt-had-an-effect-on-drunken-driving-deaths-study-finds|Rebecca Hersher
+http://gpuofthebrain.com/blog/2016/7/22/how-magic-leap-will-work|Jono MacDougall
+http://qz.com/741099/the-worlds-cities-with-the-most-bookstores-and-libraries-per-capita/|Thu-Huong Ha
+https://www.theguardian.com/commentisfree/2016/jul/29/stephen-hawking-brexit-wealth-resources|Stephen Hawking
+http://www.livemint.com/Politics/xnmBugKZakEDVlwrQ6PEXK/US-Switzerland-back-out-of-disputed-norm-in-patent-law.html|D. Ravi Kanth
+http://www.atlasobscura.com/articles/the-public-shaming-of-englands-first-umbrella-user|Michael Waters
+https://www.foreignaffairs.com/articles/south-africa/2015-10-18/bitter-pill|Fran Quigley
+http://www.vqronline.org/essays-articles/2016/07/twinkle-twinkle-vogel-staar|Elena Passarello
+https://www.1843magazine.com/features/do-nice-guys-come-second|Alexandra Suich
+http://ww2.kqed.org/news/2015/08/05/what-would-really-happen-if-a-tsunami-hit-san-francisco/|Johanna Varner
+http://www.nature.com/news/chinese-satellite-is-one-giant-step-for-the-quantum-internet-1.20329|Elizabeth Gibney
+http://reallifemag.com/the-babysitters-club/|Jesse Barron
+http://www.ibtimes.co.uk/if-you-get-caught-using-vpn-uae-you-will-face-fines-545000-1572888|Mary-Ann Russon
+https://newhumanist.org.uk/5052/why-poetry-is-good-for-the-rational-mind|Fiona Sampson
+https://news.vice.com/article/venezuela-has-a-new-forced-labor-law-that-can-require-people-work-in-fields|Alan Hernández
+http://www.latimes.com/business/technology/la-fi-tn-soylent-container-home-20160729-snap-htmlstory.html|Paresh Dave and Samantha Masunaga

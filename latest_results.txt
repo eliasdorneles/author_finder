@@ -1,0 +1,50 @@
+With faster but imprecise text around extraction:
+
+
+$ time python classify.py 
+.....................................................................................................................
+Total page samples: 117
+classify.py:37: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  y.append(d['target'] == text)
+
+Confusion matrix:
+[[39475    86]
+ [  118    69]] 
+
+
+             precision    recall  f1-score   support
+
+      False       1.00      1.00      1.00     39561
+       True       0.45      0.37      0.40       187
+
+avg / total       0.99      0.99      0.99     39748
+
+Training and peeking at the word weights...
+Top 10 weights for negative cases
+-0.55468  CLASS_fb
+-0.53438  CLASS_visibility
+-0.51286  CLASS_DOuLH3a
+-0.40336  A_HREF_TOK_oid
+-0.35910  A_HREF_TOK_glimpse
+-0.35289  A_HREF_TOK_boss
+-0.35010  A_HREF_TOK_education
+-0.32822  A_HREF_TOK_1180262
+-0.30731  A_HREF_TOK_6813531
+-0.28959  A_HREF_TOK_3695492
+
+Top 10 weights for positive cases
+1.58310  CLASS_fyre
+1.36959  A_HREF_TOK_theatre
+1.19008  A_HREF_TOK_iPad
+1.10580  A_HREF_TOK_blood_moon_magic_12_amazing_images_of_the_supermoon_around_the_world
+0.85328  BEFORE_br
+0.81285  A_HREF_TOK_election
+0.75652  CLASS_bar
+0.69786  A_HREF_TOK_3695849
+0.65597  A_HREF_TOK_KEIWashDC
+0.65597  CLASS_content
+
+real    4m59.312s
+user    4m59.300s
+sys 0m0.484s
+

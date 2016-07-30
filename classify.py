@@ -157,7 +157,7 @@ def main():
     print(metrics.classification_report(y, predicted))
 
     print('Training and peeking at the word weights...')
-    X_train, y_train, _ = build_Xy_from_pages_dataset(dataset[:20])
+    X_train, y_train = X[:-20], y[:-20]
     clf = get_trained_classifier(X_train, y_train)
     cv = clf.steps[-2][1]
     svc = clf.steps[-1][1]

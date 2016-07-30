@@ -1,8 +1,8 @@
 from __future__ import print_function
 import numpy as np
-import re
 from sklearn import cross_validation, svm, metrics
 from sklearn.feature_extraction import DictVectorizer
+from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import FunctionTransformer
 
@@ -38,28 +38,45 @@ def build_Xy_from_pages_dataset(dataset):
 
 
 def extract_dict_features(X):
-    def tokenize(x):
-        return re.split('\s', x)
+    tokenize = CountVectorizer().build_tokenizer()
+
+    def get_text_around_slow(sel):
+        """Slower, but more accurate way of getting text around"""
+        from autopager import htmlutils
+        return htmlutils.get_text_around_selector_list([sel])[0]
+
+    def get_text_around_fast(sel):
+        """Cheap attempt of getting text around, inaccurate for
+        nested elements or for elements repeating inside parent"""
+        parent_text = sel.xpath('./parent::*').extract_first()
+        text_around = parent_text.split(sel.extract())
+        return text_around[0], text_around[-1]
+
+    get_text_around = get_text_around_fast
 
     def featurize(x):
         text = extract_text(x)
         tokens = tokenize(text)
-        parent_text = x.xpath('./parent::*').extract_first()
-        text_around = parent_text.split(x.extract())
-        before_tokens = tokenize(text_around[0])
-        after_tokens = tokenize(text_around[-1])
-        parent_tokens = set(tokenize(parent_text))
-        return {
-            'elem_tag': x.xpath('name()').extract_first(),
+        before, after = get_text_around(x)
+
+        features = {
+            'element_tag': x.root.tag,
             'token_count': len(tokens),
-            'before_tokens': len(before_tokens),
-            'after_tokens': len(after_tokens),
-            'by': 'by' in before_tokens,
-            'written': 'written' in parent_tokens,
-            'wrote': 'wrote' in parent_tokens,
-            'posted': 'posted' in parent_tokens,
-            'submitted': 'submitted' in parent_tokens,
         }
+
+        for tok in tokenize(before[-5:]):
+            k = 'BEFORE_' + tok
+            features[k] = features.get(k, 0) + 1
+
+        for tok in tokenize(after[:5]):
+            k = 'AFTER_' + tok
+            features[k] = features.get(k, 0) + 1
+
+        for pos, tok in enumerate(text.split()[:10], 1):
+            k = 'WORD_%s_%s' % (pos, tok)
+            features[k] = features.get(k, 0) + 1
+
+        return features
 
     return [featurize(x) for x in X]
 
